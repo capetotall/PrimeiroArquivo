@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="itf-8" />
+		<title>Validaçao de formulário com JS</title>
+		<script type="text/javascript">
+		function validacao(){
+			var formulario = document.forms["formcadastro"]
+			var nome = formulario.nome.value
+			var cpf = formulario.cpf.value
+			var perfil = formulario.perfil.value
+			var sexo = formulario.perfil.value
+			
+			var erro = false // nao tem erro
+			if (nome.indexOf(" ") ==-1){
+				alert("Preencha o nome completo")
+				erro = true // quando identificar um erro
+			}
+			if (cpf.length !=11){
+			alert ("Preencha o cpf corretamente")
+			erro = true
+			}
+			if (perfil.length < 20){
+			alert("Digite pelomentos 20 caracteres")
+			erro = true
+			}
+			if (erro){ // se houver erro retorna falso
+				return false
+			}else{
+				return true
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<form name="formcadastro" action="exemplo.php" method="post" onsubmit="return validacao()">
+			<label>Nome</label>
+			<input type="text" name="nome" placeholder="Nome" /><br />
+			<label>CPF</label>
+			<input type="number" name="cpf" placeholder="CPF" /><br/>
+			<label>Sexo</label><br/>
+			<input type="radio" name="sexo" value="M" checked="checked"  />Masculino <br/>
+			<input type="radio" name="sexo" value="F" />Feminino <br/>
+			<label>Perfil</label><br/>
+			<textarea name="perfil" rows="10" cols="50"></textarea><br>
+			<input type="submit" name="enviar" value="salvar" />
+		</form>
+	</body>
+</html>
